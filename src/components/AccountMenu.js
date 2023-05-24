@@ -4,7 +4,7 @@ import { Link as LinkComponent } from 'react-router-dom';
 
 import LogoImg from '../logo.svg';
 
-export default function AccountMenu({ onClick }) {
+export default function AccountMenu() {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -63,7 +63,7 @@ export default function AccountMenu({ onClick }) {
               right: 14,
               width: 10,
               height: 10,
-              bgcolor: "background.paper",
+              backgroundColor: "background.paper",
               transform: "translateY(-50%) rotate(45deg)",
               zIndex: 0,
             },
@@ -72,7 +72,7 @@ export default function AccountMenu({ onClick }) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={onClick}>
+        <MenuItem >
           <Avatar />{" "}
           <Link
             to="/todo"

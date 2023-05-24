@@ -31,7 +31,7 @@ export default function Todos() {
       <TableBody>
         {todos.map((todo) => (
           <TableRow key={todo.id}>
-            <TableCell>{todo.todo}</TableCell>
+            <TableCell sx={{ fontWeight: 'bold'}}>{todo.todo}</TableCell>
             <TableCell>{todo.firstName}</TableCell>
             <TableCell>{todo.lastName}</TableCell>
             <TableCell>{todo.email}</TableCell>
