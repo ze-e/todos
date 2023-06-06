@@ -1,22 +1,12 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import { Formik, Field, Form } from 'formik';
-import { TodosContext } from "../context/Todos.context";
-import { v4 as createId } from "uuid";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../store/todos.slice";
 
 const BasicForm = () => {
-  const { todos, setTodos } = React.useContext(TodosContext);
-  
-  const addTodo = (todoData) => {
+    const dispatch = useDispatch();
 
-    const todosCopy = [...todos];
-    const newTodo = {
-      id: createId(),
-      ...todoData,
-    };
-    const newTodos = [newTodo, ...todosCopy];
-    setTodos(newTodos);
-  };
   return (
 
   <div>
@@ -28,7 +18,7 @@ const BasicForm = () => {
         email: "",
         todo: "",
       }}
-      onSubmit={(values) => addTodo(values)}
+      onSubmit={(values) => dispatch(addTodo(values))}
     >
       <Form>
         <label htmlFor="todo">Todo </label>

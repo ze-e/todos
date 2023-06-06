@@ -4,16 +4,17 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
-import TodosProvider from './context/Todos.context';
+import store from "./store/store.js";
+import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TodosProvider>
+    <Provider store={store}>
       <Router>
-        <App />
+          <App />
       </Router>
-    </TodosProvider>
+    </Provider>
   </React.StrictMode>
 );
 

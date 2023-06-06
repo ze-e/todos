@@ -1,4 +1,6 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { removeTodo } from "../store/todos.slice";
 import {
   Table,
   TableBody,
@@ -7,17 +9,11 @@ import {
   TableRow,
   Button
 } from "@mui/material";
-import { TodosContext } from "../context/Todos.context";
 
 export default function Todos() {
-  const { todos, setTodos } = React.useContext(TodosContext);
+  const { todos } = useSelector(state => state.todos);
+  const dispatch = useDispatch();
 
-   const removeTodo = (todoId) => {
-     const todosCopy = [...todos];
-     const newTodos = todosCopy.filter(todo => todo.id !== todoId);
-     setTodos(newTodos);
-  };
-  
   return !!todos.length ? (
     <Table>
       <TableHead>
@@ -38,7 +34,7 @@ export default function Todos() {
             <Button
               variant="outlined"
               color="error"
-              onClick={() => removeTodo(todo.id)}
+              onClick={() => dispatch(removeTodo(todo.id))}
             >
               Delete
             </Button>
